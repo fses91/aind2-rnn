@@ -26,11 +26,15 @@ def build_part1_RNN(window_size):
     model.add(Dense(1))
     return model
 
-
 ### TODO: return the text input with only ascii lowercase and the punctuation given below included.
+### idea from the udacity forum
 def cleaned_text(text):
-    punctuation = ['!', ',', '.', ':', ';', '?']
-    for s in punctuation:
+    chars = set(text)
+    allowed = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+               'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', ',',
+               '.', ':', ';', '?', ' '}
+    to_remove = list(chars - allowed)
+    for s in to_remove:
         text = text.replace(s, ' ')
     return text
 
